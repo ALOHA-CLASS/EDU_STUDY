@@ -7,9 +7,10 @@ export const useTodoStore = defineStore(
     const id = ref(0);
     const todos = ref([]);
 
-    const allTodosCount = computed(() => todos.value.length);
-    const completedTodosCount = computed(() => todos.value.filter((todo) => todo.completed).length);
-    const activeTodosCount = computed(() => todos.value.filter((todo) => !todo.completed).length);
+    // getters: todos의 전체 개수, 완료된 개수, 미완료 개수를 계산하는 계산 속성
+    const allTodosCount = computed(() => todos.value.length); // 전체 할 일 개수
+    const completedTodosCount = computed(() => todos.value.filter((todo) => todo.completed).length); // 완료된 할 일 개수
+    const activeTodosCount = computed(() => todos.value.filter((todo) => !todo.completed).length); // 미완료(진행중) 할 일 개수
 
     const addTodo = (title) => {
       todos.value.push({ id: id.value++, title, completed: false });
