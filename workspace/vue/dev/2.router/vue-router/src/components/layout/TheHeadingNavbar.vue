@@ -7,6 +7,44 @@ import IconFile from "@/components/icons/IconFile.vue";
 import DropDownIconMenuSlot from "@/components/common/DropDownIconMenuSlot.vue";
 
 const router = useRouter();
+/*
+  ✅ router.fullPath
+  - 현재 라우트의 전체 경로를 반환
+  - 예: "/r01/board/123"
+  ✅ router.currentRoute
+  - 현재 라우트에 대한 정보 객체를 반환
+  - 예: { path: "/r01/board/123", name: "boardview1", params: { no: 123 } }
+  ✅ router.matched
+  - 현재 라우트와 일치하는 모든 라우트 레코드의 배열을 반환
+  - 예: [{ path: "/r01/board", name: "board1" }, { path: "/r01/board/:no", name: "boardview1" }]
+  ✅ router.params
+  - 현재 라우트의 동적 세그먼트 매개변수를 포함하는 객체를 반환
+  - 예: { no: "123" }
+  ✅ router.query
+  - 현재 라우트의 쿼리 매개변수를 포함하는 객체를 반환
+  - 예: { search: "keyword" }
+  ✅ router.path
+  - 현재 라우트의 경로를 반환
+  - 예: "/r01/board/123"
+  ✅ router.name
+  - 현재 라우트의 이름을 반환
+  - 예: "boardview1"
+  ✅ router.push()
+  - 새로운 경로로 이동
+  - 새 히스토리 항목을 추가
+  ✅ router.replace()
+  - 현재 라우트를 새 경로로 대체
+  - 새 히스토리 항목을 추가하지 않음
+  ✅ router.go()
+  - 브라우저의 히스토리 스택을 탐색
+  - 예: router.go(-1) // 이전 페이지로 이동
+  ✅ router.back()
+  - 브라우저의 이전 페이지로 이동
+  ✅ router.forward()
+  - 브라우저의 다음 페이지로 이동
+
+
+*/
 
 function moveMain() {
   // router.replace({ path: "/" }); // 현재 라우트를 대체
@@ -23,6 +61,8 @@ function moveBoard() {
   <nav class="navbar navbar-expand-md bg-body-tertiary sticky-top">
     <div class="container-fluid">
       <router-link to="/" class="navbar-brand">
+      <!-- :to="/" ➡️ v-bind="/"  : 디렉티브 속성값은 Javascript 표현식 -->
+      <!-- <router-link :to="/" class="navbar-brand"> -->
         <img src="@/assets/mmcafe.png" class="rounded mx-auto d-block" id="logo" alt="..." />
       </router-link>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
@@ -109,6 +149,7 @@ function moveBoard() {
             </a>
             <ul class="dropdown-menu">
               <li>
+                <!-- name(이름) 으로 경로 지정 -->
                 <router-link :to="{ name: 'main' }" class="dropdown-item">
                   <DropDownIconMenuSlot>
                     <template v-slot:icon>

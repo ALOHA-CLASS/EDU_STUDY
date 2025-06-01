@@ -28,9 +28,16 @@ let articles = [
         <tr v-for="article in articles" :key="article.articleNo">
           <td>{{ article.articleNo }}</td>
           <td>
-            <router-link :to="{ name: 'boardview3', params: { no: article.articleNo } }">
+            <!-- router-link를 사용하여 라우트로 이동 -->
+            <!-- 방법1 -->
+            <!-- <a :href="'/boardview3/' + article.articleNo"> -->
+            <!-- 방법2 -->
+            <!-- params : 경로 파라미터 -->
+            <!-- query  : 쿼리 파라미터 -->
+            <router-link :to="{ name: 'boardview3', params: { no: article.articleNo }, query: { test: 1 } }">
               {{ article.subject }}
             </router-link>
+            <!-- 방법3 -->
             <!-- <a @click="router.push({ name: 'boardview3', params: { no: article.articleNo } })">
               {{ article.subject }}
             </a> -->

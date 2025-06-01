@@ -1,4 +1,6 @@
 <script setup>
+
+// ⭐ 라우터링크, 라우터뷰는 전역 설정이므로, import 없이 사용 가능
 // main.js에서 app.use(router);
 // Vue Router 플러그인을 애플리케이션에 등록하면,
 // <router-view>와 <router-link>와 같은 컴포넌트들이 전역(global)으로 자동 등록됨

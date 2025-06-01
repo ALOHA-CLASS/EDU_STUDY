@@ -27,6 +27,8 @@ function deleteArticle(articleno, success, fail) {
   local.delete(`/board/${articleno}`).then(success).catch(fail);
 }
 
+
+// 하나씩 export 하는 방법
 export {
   listArticle,
   detailArticle,
@@ -35,3 +37,6 @@ export {
   modifyArticle,
   deleteArticle,
 };
+
+// 묶어서 export 하는 방법
+// export * from "./board";

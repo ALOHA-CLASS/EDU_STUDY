@@ -12,9 +12,9 @@ const router = createRouter({
     {
       path: "/board",
       name: "board",
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
+      // 라우트 레벨 코드 분할 (⭐lazy 모드)
+      // 이 라우트는 별도의 청크(About.[hash].js)로 분리되어,
+      // 해당 경로에 접근할 때 비동기로 로드됩니다.
       component: () => import("../views/AppBoardView.vue"),
       redirect: { name: "article-list" },
       children: [

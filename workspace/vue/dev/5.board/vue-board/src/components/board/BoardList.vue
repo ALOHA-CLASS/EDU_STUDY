@@ -20,8 +20,8 @@ const articles = ref([]);
 const currentPage = ref(1);
 const totalPage = ref(0);
 const param = ref({
-  pgno: currentPage.value,
-  spp: import.meta.env.VITE_ARTICLE_LIST_SIZE,
+  pgno: currentPage.value,                          // 현재 페이지 번호
+  spp: import.meta.env.VITE_ARTICLE_LIST_SIZE,      // 페이지당 글목록 수 - spp (Search Per Page)
   key: "",
   word: "",
 });
@@ -42,13 +42,16 @@ const getArticleList = () => {
     console.log("검색 조건을 선택하세요.");
   console.log("서버에서 글목록 얻어오자!!!", param.value);
   listArticle(
+    // 
     param.value,
+    // success =>  // 성공했을 때
     ({ data }) => {
       console.log(data);
       articles.value = data.articles;
       currentPage.value = data.currentPage;
       totalPage.value = data.totalPageCount;
     },
+    // fail =>  // 실패했을 때
     (error) => {
       console.log(error);
     }
@@ -56,6 +59,7 @@ const getArticleList = () => {
 };
 
 const onPageChange = (val) => {
+  // val : 클릭한 페이지 번호
   console.log(val + "번 페이지로 이동 준비 끝!!!");
   param.value.pgno = val;
   getArticleList();
@@ -111,7 +115,7 @@ const moveWrite = () => {
           </tbody>
         </table>
       </div>
-      <ThePageNavigation :current-page="currentPage" :total-page="totalPage" @pageChange="onPageChange" />
+      <ThePageNavigation :current-page="currentPage" :total-page="totalPage" @page-change="onPageChange" />
     </div>
   </div>
 </template>

@@ -11,9 +11,9 @@ onMounted(() => {
   console.log(router); // router 전체의 정보
   console.log(route); // 현재 호출된 해당 라우트의 정보 (Proxy)
   console.log(route.path); // 현재 호출된 라우트의 경로
-  console.log(route.query); // 쿼리 정보
+  console.log(route.query);               // /board?no=1 : URL에 쿼리 파라미터가 있을 때 사용
   console.log(route.params); // 파라미터 정보
-  articleNo.value = route.params.no;
+  articleNo.value = route.params.no;      // /board/:no : Path Variable로 설정된 파라미터 값
 });
 </script>
 
